@@ -19,12 +19,12 @@ android.applicationVariants.configureEach { variant ->
 
         // Set the archivesBaseName property
         // https://stackoverflow.com/questions/52508720/how-to-change-the-generated-filename-for-app-bundles-with-gradle
-        project.setProperty("archivesBaseName", "siyuan-${versionName}")
+        project.setProperty("archivesBaseName", "padhivu-${versionName}")
 
         // 根据构建类型调整文件名
         if (buildType != "release") {
             def formattedDate = new Date().format('yyyyMMddHHmmss')
-            project.setProperty("archivesBaseName", "siyuan-${versionName}-${buildType}-${formattedDate}")
+            project.setProperty("archivesBaseName", "padhivu-${versionName}-${buildType}-${formattedDate}")
         }
     }
 }
@@ -39,6 +39,14 @@ android {
         targetSdk 36
         versionCode siyuanVersionCode
         versionName siyuanVersionName
+    }
+
+    sourceSets {
+        main {
+            java {
+                exclude '**/BuildConfig.java'
+            }
+        }
     }
 
     buildTypes {
@@ -60,7 +68,7 @@ android {
 
             minifyEnabled false
 
-            resValue "string", "app_name", "SiYuan-Debug"
+            resValue "string", "app_name", "Padhivu-Debug"
             resValue "string", "app_package_name", "org.b3log.siyuan.debug"
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
